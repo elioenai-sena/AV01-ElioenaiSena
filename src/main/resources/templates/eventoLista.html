@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Cadastro de Evento</title>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<ul class="nav navbar-nav">
+			<li><a href="/cadastrarEvento">Cadastrar Evento</a></li>
+			<li><a href="/">Inicio</a></li>
+		</ul>
+	</nav>
+	<div class="contatiner col-sm-12 col-md-6 col-md-offset-2">
+	<h2>Lista de Eventos</h2>
+		<table class="table table-dark">
+			<tr>
+				<th>Responsavel</th>
+				<th>Bloco</th>
+				<th>Apto</th>
+				<th>Data</th>
+				<th>Hora Inicio</th>
+				<th>Hora Termino</th>
+				<th>Descrição</th>
+				<th>Ação</th>
+			</tr>
+			<tr th:each="agenda : ${lista}">
+				<td th:text="${agenda.nomeResponsavel}"></td>
+				<td th:text="${agenda.bloco}"></td>
+				<td th:text="${agenda.aptoResponsavel}"></td>
+				<td th:text="${#dates.format(agenda.dataEvento, 'dd-MM-yyyy')}"></td>
+				<td th:text="${agenda.horaInicio}"></td>
+				<td th:text="${agenda.horaTermino}"></td>
+				<td th:text="${agenda.descricaoEvento}"></td>
+				<td><a th:href="@{/editarEvento(id=${agenda.id})}">Editar</a>&nbsp;&nbsp;
+					<a th:href="@{/removerEvento(id=${agenda.id})}">Remover</a></td>
+
+			</tr>
+		</table>
+	</div>
+
+</body>
+</html>

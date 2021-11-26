@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Cadastro de Evento</title>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+
+<body>
+
+	<div class="container col-sm-12 col-md-6 col-md-offset-2">
+		<h2>Cadastro de Eventos</h2>
+
+		<form action="/salvarEvento" th:object="${agendaEventos}"
+			method="post">
+			<input type="hidden" th:field="*{id}">
+			<div class="form-group">
+				<label for="nome">Responsavel:</label> <input type="text"
+					th:field="*{nomeResponsavel}" class="form-control" id="nome">
+			</div>
+			<div class="form-group">
+				<label for="bloco">Bloco:</label> <input type=text
+					th:field="*{bloco}" class="form-control" id="bloco">
+			</div>
+			<div class="form-group">
+				<label for="aptoResponsavel">Apartamento:</label> <input
+					type="number" th:field="*{aptoResponsavel}" class="form-control"
+					id="aptoResponsavel">
+			</div>
+			<div class="form-group">
+				<label for="data">Data:</label> <input type="date"
+					th:field="*{dataEvento}" class="form-control" id="data">
+			</div>
+
+			<div class="form-group">
+				<label for="horaInicio">Hora Inicio:</label> <input type="time"
+					th:field="*{horaInicio}" class="form-control" id="horaInicio" />
+			</div>
+			<div class="form-group">
+				<label for="horaTermino">Hora Termino:</label> <input type="time"
+					th:field="*{horaTermino}" class="form-control" id="horaTermino" />
+			</div>
+			<div class="form-group">
+				<label for="quantidadePessoas">Quantidade de Pessoas:</label> <input
+					type="number" th:field="*{quantidadePessoas}" class="form-control"
+					id="quantidadePessoas" />
+			</div>
+
+			<div class="form-group">
+				<label for="descricao">Descrição:</label>
+				<textarea rows="5" cols="10" class="form-control" id="descricao"
+					th:field="*{descricaoEvento}"></textarea>
+			</div>
+			<button type="submit" class="btn btn-primary">Enviar</button>
+			<a class="btn btn-primary" href="/">Cancelar</a>
+		</form>
+
+	</div>
+
+</body>
+
+</html>
